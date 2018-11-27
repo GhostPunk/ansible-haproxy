@@ -43,6 +43,10 @@ frontend {{ frontend.name }}
   timeout {{ timeout.type }} {{ timeout.timeout }}
 {% endfor %}
 
+{% for raw_option in frontend.raw_option | default([]) %}
+  {{ raw_option }}
+{% endfor %}
+
 {% for acl in frontend.acl | default([]) %}
   acl {{ acl.string }}
 {% endfor %}

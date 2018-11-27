@@ -53,6 +53,10 @@ backend {{ backend.name }}
   timeout {{ timeout.type }} {{ timeout.timeout }}
 {% endfor %}
 
+{% for raw_option in backend.raw_option | default([]) %}
+  {{ raw_option }}
+{% endfor %}
+
 {% for acl in backend.acl | default([]) %}
   acl {{ acl.string }}
 {% endfor %}
